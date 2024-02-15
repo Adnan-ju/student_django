@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Student List</h1>
+        <table class="table table-bordered mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Enrolled Courses</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in all %}
+                <tr>
+                    <td>{{ student.std_id }}</td>
+                    <td>{{ student.std_name }}</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            {% for course in student.std_enrolled_courses.all %}
+                                <li>{{ course.course_name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="{% url 'remove_student' std_id=student.std_id %}" class="btn btn-danger btn-sm">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'add_student' %}" class="btn btn-success">Add new student</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color:#FFFFFF;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        .student-details {
+            margin-bottom: 20px;
+        }
+        .course-table th, .course-table td {
+            vertical-align: middle;
+            border: 2px solid black;
+        }
+        .remove-course-btn {
+            padding: 5px 10px;
+        }
+        .add-course-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 student-details">
+                <h1 class="text-center">Student Information</h1>
+                <p class="text-center "><strong>ID:</strong> {{ student.std_id }}</p>
+                <p class="text-center"><strong>Name:</strong> {{ student.std_name }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center ">
+                <table class="table table-bordered course-table text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Credit</th>
+                            <th>Tutorial Marks</th>
+                            <th>Attendance Marks</th>
+                            <th>Final Exam Full Marks</th>
+                            <th>Course Type</th>
+                            <th>Remove Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cors in student.std_enrolled_courses.all %}
+                            <tr>
+                                <td>{{ cors.course_id }}</td>
+                                <td>{{ cors.course_name }}</td>
+                                <td>{{ cors.course_credit }}</td>
+                                <td>{{ cors.tutorial_full_marks }}</td>
+                                <td>{{ cors.att_full_marks }}</td>
+                                <td>{{ cors.final_full_marks }}</td>
+                                <td>{{ cors.course_type }}</td>
+                                <td><a href="{% url 'remove_course' std_id=student.std_id course_id=cors.id %}" class="btn btn-danger remove-course-btn"><i class="fas fa-trash-alt"></i> Remove</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'add_available_course' std_id=student.std_id %}" class="btn btn-success add-course-btn text-center">Register for new course</a>
+                <a href="{% url 'search_stu' %}" class="btn btn-primary add-course-btn text-center"><i class="fas fa-search"></i> Search Another Student</a>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS CDN (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of books</h1>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Author</td>
+            <td>Email</td>
+            <td>Description</td>
+        </tr>
+        {%for b in all_books %}
+        <tr>
+            <td>{{b.id}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.author}}</td>
+            <td>{{b.email}}</td>
+            <td>{{b.summary}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

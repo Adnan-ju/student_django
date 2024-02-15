@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course List</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Course ID</th>
+                    <th>Title</th>
+                    <th>Course Credit</th>
+                    <th>Tutorial Full Marks</th>
+                    <th>Attendance Full Marks</th>
+                    <th>Final Full Marks</th>
+                    <th>Course Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cors in all_courses %}
+                <tr>
+                    <td>{{ cors.course_id }}</td>
+                    <td>{{ cors.course_name }}</td>
+                    <td>{{ cors.course_credit }}</td>
+                    <td>{{ cors.tutorial_full_marks }}</td>
+                    <td>{{ cors.att_full_marks }}</td>
+                    <td>{{ cors.final_full_marks }}</td>
+                    <td>{{ cors.course_type }}</td>
+                    <td>
+                        <a href="{% url 'edit' cors.id %}" class="btn btn-primary">Edit</a><br>
+                        <a href="{% url 'remove' cors.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'add' %}" class="btn btn-success">Add New Course</a>
+    </div>
+</body>
+</html>

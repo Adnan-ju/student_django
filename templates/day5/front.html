@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .btn-wrapper {
+            text-align: center;
+        }
+        .btn-custom {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .btn-add-student {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .btn-search-student {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .btn-see-list {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        }
+        .header{
+            font-size:40px;
+            margin:60px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h6 class="text-center font-weight-bold header">Student Management System</h6>
+        <div class="btn-wrapper">
+            <a href="{% url 'add_student' %}" class="btn btn-custom btn-add-student">Add Student</a>
+            <a href="{% url 'search_stu' %}" class="btn btn-custom btn-search-student">Search Student</a>
+            <a href="{% url 'student_list' %}" class="btn btn-custom btn-see-list">See Student List</a>
+        </div>
+    </div>
+</body>
+</html>

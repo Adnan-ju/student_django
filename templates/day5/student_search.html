@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mt-5 text-center">Search Student</h1>
+        <form method="GET" action="{% url 'search_student' %}" class="mt-4">
+            <div class="form-group text-center">
+                <label for="std_id text-lg">Student ID:</label>
+                <input type="text" id="std_id" name="std_id" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary ">Search</button>
+        </form>
+        {% if info %}
+        <div class="alert alert-danger mt-4" role="alert">
+            {{ info }}
+        </div>
+        {% endif %}
+    </div>
+    <!-- Include jQuery before Bootstrap's JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

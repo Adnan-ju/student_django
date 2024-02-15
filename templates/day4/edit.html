@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Page</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Course Id : {{form.course_id}}</p>
+        <p>Course Title : {{form.course_name}}</p>
+        <p>Course Credit : {{form.course_credit}}</p>
+        <p>Tutorial Marks : {{form.tutorial_full_marks}}</p>
+        <p>Attendance Marks : {{form.att_full_marks}}</p>
+        <p>Final Marks Id : {{form.final_full_marks}}</p>
+        <p>Enter Course Type: {{ form.course_type }}</p>
+        <input type="Submit" value="UPDATE">
+    </form>
+</body>
+</html>
